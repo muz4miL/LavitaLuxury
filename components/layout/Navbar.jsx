@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import styles from './Navbar.module.css';
 
 const navConfig = [
   { label: 'Home', href: '/' },
@@ -63,12 +62,17 @@ export default function Navbar() {
 
   const renderDropdown = (items, parentLabel) => (
     <div
-      className={`${styles.dropdown} ${
-        activeDropdown === parentLabel ? styles.dropdownVisible : ''
-      }`}
+      className={`absolute top-[2.75rem] left-1/2 -translate-x-1/2 min-w-[220px] bg-[rgba(5,17,14,0.98)] border border-[rgba(200,155,123,0.25)] rounded-xl p-4 shadow-[0_30px_60px_rgba(0,0,0,0.35)] transition-all duration-250 ease-out origin-top-center ${activeDropdown === parentLabel
+        ? 'opacity-100 visible translate-y-2 animate-[fadeUp_0.25s_ease_forwards]'
+        : 'opacity-0 invisible'
+        }`}
     >
       {items.map((item) => (
-        <Link key={item.label} href={item.href} className={styles.dropdownLink}>
+        <Link
+          key={item.label}
+          href={item.href}
+          className="block font-[family-name:var(--font-manrope)] text-[0.82rem] text-[rgba(245,245,245,0.9)] py-[0.35rem] no-underline transition-all duration-300 hover:text-[#c89b7b] hover:translate-x-1"
+        >
           {item.label}
         </Link>
       ))}
@@ -76,38 +80,51 @@ export default function Navbar() {
   );
 
   return (
-    <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
-      <div className={styles.inner}>
-        <Link href="/" className={styles.brand} aria-label="Lavita Malam Jabba">
-          <div className={styles.logoWrap}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-60 px-[clamp(1.5rem,4vw,3rem)] transition-all duration-[350ms] ease-out border-b ${isScrolled
+        ? 'bg-[rgba(15,37,34,0.85)] backdrop-blur-[18px] border-b-[rgba(255,255,255,0.08)] py-[0.85rem]'
+        : 'border-b-transparent py-5'
+        }`}
+    >
+      <div className="mx-auto max-w-[1440px] flex items-center gap-6">
+        <Link href="/" className="flex items-center gap-3 no-underline" aria-label="Lavita Malam Jabba">
+          <div className="flex items-center shrink-0">
             <Image
-              src="/lavitaPng.PNG"
-              alt="Lavita Malam Jabba"
-              fill
-              sizes="160px"
+              src="/logo/logo.png"
+              alt="Lavita"
+              width={35}
+              height={50}
               priority
             />
           </div>
-          <div className={styles.brandWordmark}>
-            <span className={styles.brandPrimary}>Lavita</span>
-            <span className={styles.brandSecondary}>Malam Jabba</span>
+          <div className="flex flex-col leading-none">
+            <span className="font-[family-name:var(--font-playfair)] text-[1.05rem] tracking-[0.35em] uppercase text-[var(--text-light)]">
+              Lavita
+            </span>
+            <span className="font-[family-name:var(--font-manrope)] text-[0.55rem] tracking-[0.35em] uppercase text-[#c89b7b]">
+              Malam Jabba
+            </span>
           </div>
         </Link>
 
-        <nav className={styles.desktopNav}>
+        <nav className="hidden lg:flex items-center gap-11 ml-auto">
           {navConfig.map((item) => {
             if (item.items) {
               return (
                 <div
                   key={item.label}
-                  className={styles.navItem}
+                  className="relative"
                   onMouseEnter={() => setActiveDropdown(item.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                   onFocus={() => setActiveDropdown(item.label)}
                 >
-                  <button className={styles.navButton} type="button" aria-haspopup="true">
+                  <button
+                    className="flex items-center gap-[0.35rem] bg-transparent border-none cursor-pointer p-0 font-[family-name:var(--font-manrope)] text-[0.78rem] tracking-[0.18em] uppercase text-[rgba(245,245,245,0.85)] no-underline transition-colors duration-300 hover:text-[#c89b7b]"
+                    type="button"
+                    aria-haspopup="true"
+                  >
                     <span>{item.label}</span>
-                    <ChevronDown className={styles.chevron} />
+                    <ChevronDown className="w-[14px] h-[14px]" />
                   </button>
                   {renderDropdown(item.items, item.label)}
                 </div>
@@ -115,21 +132,28 @@ export default function Navbar() {
             }
 
             return (
-              <Link key={item.label} href={item.href} className={styles.navLink}>
+              <Link
+                key={item.label}
+                href={item.href}
+                className="font-[family-name:var(--font-manrope)] text-[0.78rem] tracking-[0.18em] uppercase text-[rgba(245,245,245,0.85)] no-underline transition-colors duration-300 hover:text-[#c89b7b]"
+              >
                 {item.label}
               </Link>
             );
           })}
         </nav>
 
-        <div className={styles.desktopAction}>
-          <Link href="/reserve" className={styles.actionButton}>
+        <div className="hidden xl:block">
+          <Link
+            href="/reserve"
+            className="inline-flex items-center justify-center px-10 py-[0.9rem] bg-[#c89b7b] text-[#0f2522] font-[family-name:var(--font-manrope)] text-[0.78rem] font-semibold tracking-[0.25em] uppercase rounded-full border border-[#c89b7b] transition-all duration-300 hover:bg-transparent hover:text-[#c89b7b]"
+          >
             Book Your Stay
           </Link>
         </div>
 
         <button
-          className={styles.mobileToggle}
+          className="ml-auto lg:hidden flex w-11 h-11 items-center justify-center border border-[rgba(200,155,123,0.4)] rounded-xl bg-transparent text-[#c89b7b] cursor-pointer"
           onClick={toggleDrawer}
           aria-label="Toggle navigation menu"
         >
@@ -138,35 +162,59 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`${styles.drawerOverlay} ${
-          isDrawerOpen ? styles.drawerOverlayVisible : ''
-        }`}
+        className={`fixed inset-0 bg-[rgba(0,0,0,0.45)] z-50 transition-opacity duration-300 ${isDrawerOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}
         onClick={closeDrawer}
       />
 
-      <aside className={`${styles.drawer} ${isDrawerOpen ? styles.drawerOpen : ''}`}>
-        <div className={styles.drawerHeader}>
-          <p className={styles.drawerTitle}>Lavita Navigation</p>
-          <button className={styles.drawerClose} aria-label="Close menu" onClick={closeDrawer}>
+      <aside
+        className={`fixed top-0 right-0 bottom-0 w-[min(360px,85vw)] bg-[#05110e] text-[#f5f5f5] z-55 flex flex-col p-6 gap-6 border-l border-[rgba(200,155,123,0.2)] transition-transform duration-[350ms] ease-out ${isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+      >
+        <div className="flex items-center justify-between">
+          <p className="tracking-[0.3em] text-xs uppercase text-[rgba(245,245,245,0.7)]">
+            Lavita Navigation
+          </p>
+          <button
+            className="w-9 h-9 rounded-full border border-[rgba(200,155,123,0.3)] bg-transparent text-[#c89b7b] flex items-center justify-center cursor-pointer"
+            aria-label="Close menu"
+            onClick={closeDrawer}
+          >
             <X size={20} />
           </button>
         </div>
-        <div className={styles.drawerNav}>
+        <div className="flex-1 overflow-y-auto flex flex-col gap-4">
           {navConfig.map((item) => (
-            <div key={item.label} className={styles.drawerBlock}>
-              <div className={styles.drawerBlockHeader}>
+            <div
+              key={item.label}
+              className="border border-[rgba(255,255,255,0.05)] rounded-2xl py-4 px-5 bg-[rgba(255,255,255,0.02)]"
+            >
+              <div className="flex items-center justify-between font-[family-name:var(--font-playfair)] text-base uppercase tracking-[0.15em]">
                 <p>{item.label}</p>
-                {item.items && <span>Explore</span>}
+                {item.items && (
+                  <span className="font-[family-name:var(--font-manrope)] text-[0.65rem] tracking-[0.3em] text-[rgba(200,155,123,0.8)]">
+                    Explore
+                  </span>
+                )}
               </div>
-              <div className={styles.drawerLinks}>
+              <div className="flex flex-col mt-3 gap-2">
                 {item.items ? (
                   item.items.map((child) => (
-                    <Link key={child.label} href={child.href} onClick={closeDrawer}>
+                    <Link
+                      key={child.label}
+                      href={child.href}
+                      onClick={closeDrawer}
+                      className="font-[family-name:var(--font-manrope)] text-[0.9rem] text-[rgba(245,245,245,0.85)] no-underline hover:text-[#c89b7b]"
+                    >
                       {child.label}
                     </Link>
                   ))
                 ) : (
-                  <Link href={item.href} onClick={closeDrawer}>
+                  <Link
+                    href={item.href}
+                    onClick={closeDrawer}
+                    className="font-[family-name:var(--font-manrope)] text-[0.9rem] text-[rgba(245,245,245,0.85)] no-underline hover:text-[#c89b7b]"
+                  >
                     {item.label}
                   </Link>
                 )}
@@ -174,8 +222,12 @@ export default function Navbar() {
             </div>
           ))}
         </div>
-        <div className={styles.drawerCta}>
-          <Link href="/reserve" onClick={closeDrawer}>
+        <div>
+          <Link
+            href="/reserve"
+            onClick={closeDrawer}
+            className="block w-full text-center p-4 rounded-full bg-[#c89b7b] text-[#05110e] font-[family-name:var(--font-manrope)] tracking-[0.2em] uppercase text-[0.85rem]"
+          >
             Book Your Stay
           </Link>
         </div>

@@ -3,6 +3,7 @@
     opacity: 0;
     transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -44,9 +45,9 @@
 }
 
 .logoWrap {
-  position: relative;
-  width: 120px;
-  height: 48px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .brandWordmark {

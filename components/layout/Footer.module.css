@@ -36,9 +36,9 @@
 }
 
 .logoWrap {
-  position: relative;
-  width: 180px;
-  height: 72px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .headline {
