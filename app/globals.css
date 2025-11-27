@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ===================================
+   Alpine Noir Theme - Lavita Luxury
+   =================================== */
+
+:root {
+  /* Primary Colors */
+  --midnight-pine: #0F2522;
+  --alabaster-mist: #F2F4F6;
+  --brushed-copper: #C89B7B;
+  
+  /* Text Colors */
+  --text-light: #F5F5F5;
+  --text-dark: #1A1A1A;
+  
+  /* Semantic Variables */
+  --background: var(--midnight-pine);
+  --foreground: var(--text-light);
+}
+
+@theme inline {
+  /* Alpine Noir Color Palette */
+  --color-midnight-pine: var(--midnight-pine);
+  --color-alabaster-mist: var(--alabaster-mist);
+  --color-brushed-copper: var(--brushed-copper);
+  --color-text-light: var(--text-light);
+  --color-text-dark: var(--text-dark);
+  
+  /* Semantic Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Font Families */
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-manrope);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography Utilities */
+.heading-serif {
+  font-family: var(--font-heading), serif;
+}
+
+.body-sans {
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--midnight-pine);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brushed-copper);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a98a;
+}
+
+/* Selection Color */
+::selection {
+  background: var(--brushed-copper);
+  color: var(--midnight-pine);
+}

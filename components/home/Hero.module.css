@@ -1,0 +1,562 @@
+/* ===================================
+   Hero Section - Premium Luxury Styles
+   Lavita Malam Jabba
+   =================================== */
+
+/* Base Hero Container */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: var(--midnight-pine);
+}
+
+/* Layered Backgrounds for Depth */
+.bgLayer1 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #061512 0%,
+    var(--midnight-pine) 30%,
+    #0a1f1c 70%,
+    #071714 100%
+  );
+  z-index: 1;
+}
+
+.bgLayer2 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 100%,
+    rgba(200, 155, 123, 0.08) 0%,
+    transparent 50%
+  );
+  z-index: 2;
+}
+
+.bgLayer3 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 30%,
+    rgba(200, 155, 123, 0.03) 0%,
+    transparent 30%
+  ),
+  radial-gradient(
+    circle at 80% 70%,
+    rgba(200, 155, 123, 0.03) 0%,
+    transparent 30%
+  );
+  z-index: 3;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 21, 18, 0.4) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(6, 21, 18, 0.6) 100%
+  );
+  z-index: 4;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 155, 123, 0.04) 0%,
+    transparent 50%
+  );
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Weather Widget */
+.weatherContainer {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 100;
+  animation: fadeSlideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+@media (min-width: 768px) {
+  .weatherContainer {
+    top: 2.5rem;
+    right: 3rem;
+  }
+}
+
+.weatherWidget {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(15, 37, 34, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(200, 155, 123, 0.15);
+  border-radius: 100px;
+}
+
+.weatherIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--brushed-copper);
+  opacity: 0.9;
+}
+
+.weatherInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.weatherTemp {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+.weatherCondition {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.6875rem;
+  color: rgba(245, 245, 245, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Logo */
+.logoContainer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 100;
+  animation: fadeSlideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@media (min-width: 768px) {
+  .logoContainer {
+    top: 2.5rem;
+    left: 3rem;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoLine {
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--brushed-copper) 100%
+  );
+  opacity: 0.5;
+}
+
+.logoWrapper .logoLine:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--brushed-copper) 0%,
+    transparent 100%
+  );
+}
+
+.logo {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--brushed-copper);
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 1.375rem;
+  }
+}
+
+.logoTagline {
+  display: block;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200, 155, 123, 0.5);
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+/* Main Content */
+.content {
+  position: relative;
+  z-index: 50;
+  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Decorative Element */
+.decorElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.decorLine {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--brushed-copper) 100%
+  );
+  opacity: 0.6;
+}
+
+.decorElement .decorLine:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--brushed-copper) 0%,
+    transparent 100%
+  );
+}
+
+.decorIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--brushed-copper);
+  opacity: 0.7;
+}
+
+/* Eyebrow Text */
+.eyebrow {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brushed-copper);
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: 0.75rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Headline */
+.headline {
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.1s both;
+}
+
+.headlineSmall {
+  display: block;
+  font-family: var(--font-playfair), serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--text-light);
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .headlineSmall {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headlineSmall {
+    font-size: 3rem;
+  }
+}
+
+.headlineMain {
+  display: block;
+  font-family: var(--font-playfair), serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--brushed-copper);
+  line-height: 1.1;
+  background: linear-gradient(
+    135deg,
+    var(--brushed-copper) 0%,
+    #e0b89a 50%,
+    var(--brushed-copper) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .headlineMain {
+    font-size: 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headlineMain {
+    font-size: 5.5rem;
+  }
+}
+
+/* Subheadline */
+.subheadline {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.7);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+}
+
+@media (min-width: 768px) {
+  .subheadline {
+    font-size: 1.125rem;
+  }
+}
+
+.subheadlineHighlight {
+  color: var(--brushed-copper);
+  font-weight: 500;
+}
+
+.subheadlineDivider {
+  display: inline-block;
+  margin: 0 0.75rem;
+  color: rgba(200, 155, 123, 0.4);
+}
+
+/* CTA Container */
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s both;
+}
+
+@media (min-width: 640px) {
+  .ctaContainer {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+/* Primary CTA Button */
+.ctaButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.125rem 2.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--brushed-copper) 0%,
+    #b8896b 100%
+  );
+  border: none;
+  color: var(--midnight-pine);
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 40px rgba(200, 155, 123, 0.25),
+    0 0 0 1px rgba(200, 155, 123, 0.3);
+}
+
+.ctaText {
+  position: relative;
+  z-index: 2;
+}
+
+.ctaShine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+}
+
+.ctaButton:hover .ctaShine {
+  left: 100%;
+}
+
+/* Secondary CTA */
+.ctaSecondary {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.7);
+  text-decoration: none;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.3);
+  transition: all 0.3s ease;
+}
+
+.ctaSecondary:hover {
+  color: var(--brushed-copper);
+  border-color: var(--brushed-copper);
+}
+
+/* Scroll Indicator */
+.scrollContainer {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 50;
+  animation: fadeIn 1s ease-out 2s both;
+}
+
+.scrollMouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(200, 155, 123, 0.4);
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scrollWheel {
+  width: 3px;
+  height: 6px;
+  background: var(--brushed-copper);
+  border-radius: 2px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scrollChevron {
+  width: 16px;
+  height: 16px;
+  color: rgba(200, 155, 123, 0.5);
+  animation: scrollChevronBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes scrollChevronBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.8;
+  }
+}
+
+/* Bottom Fade */
+.bottomFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(
+    to top,
+    var(--midnight-pine) 0%,
+    transparent 100%
+  );
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
